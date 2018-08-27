@@ -1,5 +1,3 @@
-require 'pry'
-
 def game_hash
   {
     home: {
@@ -116,48 +114,3 @@ def game_hash
     }
   }
 end
-
-
-# def num_points_scored(player_name)
-#   # get a list of all the players
-#   # find the player whose name matches the argument 'player_name'
-#   # return that player's points
-# end
-
-
-
-
-# # EXERCISE:
-# # Define a method called get_names that takes an array of instructors
-# # and returns just their names.
-# instructors = [
-#   {name: 'Alex', hometown: 'upstate ny', mood: 'excited'},
-#   {name: 'rachel', hometown: 'maine'},
-#   {name: 'maxwell', hometwon: 'brookyln'}
-# ]
-#
-# def get_names(instructors)
-#
-# end
-
-
-
-
-# def get_players
-#
-# end
-
-
-
-# # EXERCISE
-# # What do the following return?
-#
-# arr = (1..100).to_a
-#
-# arr.map do |num|
-#   num.even?
-# end
-#
-# arr.select do |num|
-#   7
-# end
