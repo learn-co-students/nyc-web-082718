@@ -1,5 +1,5 @@
 class Tree < ActiveRecord::Base
-has_many :squirrels, through: :nests
 has_many :nests
+has_many :squirrels, through: :nests
 
 end # end Tree Class
