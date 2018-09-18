@@ -1,0 +1,7 @@
+<form action="/cerealkiller/<%= @cerealkiller.id %>" method="post">
+  <!-- name= params comes thru -->
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="name" value="<%= @cerealkiller.name %>">
+  <input type="text" name="brand" value="<%= @cerealkiller.brand %>">
+  <input type="submit" value="Make that Cereal Killer!">
+</form>
