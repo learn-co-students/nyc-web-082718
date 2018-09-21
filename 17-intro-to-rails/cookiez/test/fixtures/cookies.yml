@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delicious: false
+  flavor: MyString
+  size: 1
+  gluten_free: false
+
+two:
+  delicious: false
+  flavor: MyString
+  size: 1
+  gluten_free: false
