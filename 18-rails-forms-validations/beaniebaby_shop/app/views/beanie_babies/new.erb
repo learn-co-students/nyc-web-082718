@@ -1,0 +1,8 @@
+<h1> MAKE NEW BB</h1>
+
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+<%= render "form" %>

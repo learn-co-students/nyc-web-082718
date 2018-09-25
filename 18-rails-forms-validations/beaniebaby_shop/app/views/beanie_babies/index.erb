@@ -1,0 +1,12 @@
+<h1> INDEX </h1>
+
+
+<ul>
+<% @beanie_babies.each do |bb| %>
+  <li><%=link_to bb.name, beanie_baby_path(bb) %></li>
+<%= form_tag(beanie_baby_path(bb), method: "delete") do %>
+    <%= submit_tag("BLOW IT AWAY") %>
+  <% end %>
+<% end %>
+
+</ul>

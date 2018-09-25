@@ -1,0 +1,2 @@
+module BeanieBabiesHelper
+end

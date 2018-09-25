@@ -1,0 +1,7 @@
+<h1> Edititooo BB</h1>
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+<%= render "form" %>
