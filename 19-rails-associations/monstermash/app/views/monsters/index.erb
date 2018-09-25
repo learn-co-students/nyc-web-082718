@@ -1,0 +1,7 @@
+<h1> Monster Index</h1>
+<ul>
+<% @monsters.each do |m| %>
+  <br/>
+  <%= link_to m.name, m %> 
+<% end  %>
+</ul>

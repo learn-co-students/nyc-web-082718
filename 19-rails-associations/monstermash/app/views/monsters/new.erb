@@ -1,0 +1,9 @@
+<h1>MAKE THAT MONSTER!@</h1>
+
+<%= form_for @monster do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :fear_factor %>
+  <%= f.select :horror_movie_id, @horror_movie_options %>
+
+<%= f.submit %>
+<% end %>
