@@ -1,0 +1,9 @@
+<h1>Bagelz indexxxxorz</h1>
+
+<ul>
+<% @bagels.each do |bagel| %>
+  <li> <%= link_to bagel.name, bagel %></li>
+  <li><%= link_to "delete meeeee", bagel, method: :delete %></li>
+<% end %>
+
+</ul>
