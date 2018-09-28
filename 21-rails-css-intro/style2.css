@@ -1,0 +1,13 @@
+h2 {
+    color:lightblue;
+}
+
+.tcf {
+    padding: 20px;
+    border: 10px dotted rgba(199, 234, 70, 1);
+    margin: 100px;
+}
+
+#instructor {
+    background-color: hotpink;
+}
