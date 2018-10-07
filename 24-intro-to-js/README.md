@@ -209,3 +209,15 @@ Running the `learn` command in Terminal should open a new browser window where t
 **Keep in mind that in order for `debugger` to be triggered in your browser, you must have your developer console open.**
 
 If you need quicker and more simple debugging, `console.log` or `console.dir` is the way to go.
+
+---
+
+## Documentation
+
+- **PLEASE ALSO BURN THIS INTO YOUR MEMORY**. Always start with [MDN](https://developer.mozilla.org/en-US/) when looking at JS documentation. W3 Schools is great for HTML and CSS, **NOT SO MUCH FOR JAVASCRIPT**.
+
+(all hail Mozilla)
+
+---
+
+![history of JS infographic](https://visual.ly/node/image/702641?_w=600)
