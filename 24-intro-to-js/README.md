@@ -218,6 +218,10 @@ If you need quicker and more simple debugging, `console.log` or `console.dir` is
 
 (all hail Mozilla)
 
+- **INDENTATION AND PROPER STYLE ARE ALSO SUPER IMPORTANT MOVING FORWARD**. Airbnb has an amazing [JavaScript Style Guide](https://github.com/airbnb/javascript) if you're unsure about how to format your JS code. Trust me, learn to indent properly now before you end up in a curly bracket hellscape.
+
+![who would win, curly boi](https://i.imgur.com/ZwfLpVW.jpg)
+
 ---
 
 ![history of JS infographic](https://visual.ly/node/image/702641?_w=600)
