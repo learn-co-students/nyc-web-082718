@@ -1,10 +1,10 @@
 name = "andrew"
 
-def say_name
+def say_name(name)
   puts name
 end
 
-say_name # what will happen 🤔
+say_name(name) # what will happen 🤔
 
 not_hoisted()
 

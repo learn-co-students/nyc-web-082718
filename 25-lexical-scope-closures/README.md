@@ -430,6 +430,11 @@ multiplyByTwo(10) //20
 
 - We've created one function to rule them all. `multiplyByN` allows us to construct other multiplying functions.
 
+- Remember that “a closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope.”
+  - In other words `multiplyByTwo` is **always going to 'remember' that `outerNum` is 2**
+
+
+
 ![science](https://media.giphy.com/media/fqIBaMWI7m7O8/giphy.gif)
 
 
@@ -449,6 +454,7 @@ multiplyByTwo(10) //20
 - [Temporal Dead Zone](https://wesbos.com/temporal-dead-zone/)
 - [Air BnB JS StyleGuide](https://github.com/airbnb/javascript)
 - [MDN Article on ES2015](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)
+- [Stack Overflow Post on Chrome Debugger Variables Not Being in Scope](https://stackoverflow.com/questions/28388530/why-does-chrome-debugger-think-closed-local-variable-is-undefined)
 
 
 ![curly bois](https://i.imgur.com/ZwfLpVW.jpg)
