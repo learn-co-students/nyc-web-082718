@@ -1,5 +1,4 @@
 console.log('%c Hello, World!', 'color: orange')
-
 const header = document.querySelector('h1')
 
 const allHeaders = document.getElementsByTagName('h1')
