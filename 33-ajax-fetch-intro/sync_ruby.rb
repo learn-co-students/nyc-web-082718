@@ -12,7 +12,7 @@ puts "okay I'm awake now"
 puts "Making an HTTP GET request with RestClient"
 
 ron_swanson_quote_response = RestClient.get('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
-binding.pry
+# binding.pry
 puts "Request is complete"
 
 parsed_quote = JSON.parse(ron_swanson_quote_response)
