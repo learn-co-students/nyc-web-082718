@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const filteredStore = dataStore.lists.filter((list) => list.title !== targetListTitle)
       dataStore.lists = filteredStore
       mainContentDiv.innerHTML = renderAllListContent()
+    } else if (event.target.className.includes('delete-task')) {
+      const parentListTitle = event.target.dataset.listTitle
+      const parentList = dataStore.lists.find((list) => list.title === parentListTitle)
+      const targetTaskTitle = event.target.dataset.taskName
+      const filteredListTasks = parentList.tasks.filter((task) => task.description !== targetTaskTitle)
+      parentList.tasks = filteredListTasks
+      mainContentDiv.innerHTML = renderAllListContent()
     }
 
   })//end click handler for delete tasks
