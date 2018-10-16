@@ -7,9 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
   newListForm.addEventListener('submit', /*function*/ (event) => {
     event.preventDefault() //FORM will try to make a post request; i need to hijack this event
     const newListTitle = document.getElementById('new-list-title').value
-    dataStore.lists.push(newListTitle) //add new list to the store
+    const newListObject = { title: newListTitle, tasks: [] }
+    dataStore.lists.push(newListObject) //add new list to the store
     mainContentDiv.innerHTML = renderAllListContent() //massive helper fn that replaces ALL of the HTML in the div
   }) //end submit handler
+
+  mainContentDiv.addEventListener('submit', (event) => {//submit handler for new task form
+    event.preventDefault() //stop the form from POSTING
+    console.log(event.target) //the target is the form itself; it has 3 children: the dropdown, description, and priority level inputs. Let's grab the values from all of those
+    const targetListTitle = event.target.querySelector('#parent-list').value //value from the dropdown
+    const newTaskDescription = event.target.querySelector('#new-task-description').value //value from description input field
+    const newTaskPriority = event.target.querySelector('#new-task-priority').value //value from priority input field
+
+    const newTaskObject = { list: targetListTitle, description: newTaskDescription, priority: newTaskPriority } //new object for our datastore containing relevent info about new task
+    const parentList = dataStore.lists.find((list) => list.title === targetListTitle)
+    parentList.tasks.push(newTaskObject) //add this new task to the list it belongs to
+
+    mainContentDiv.innerHTML = renderAllListContent() //massive helper fn that replaces ALL of the HTML in the div
+  }) //end new task ev handler
 
 }) //end DOMContentLoaded
 /**************HELPER FNs (could move to their own file)***************************/
@@ -19,7 +34,7 @@ const renderNewTaskForm = () => {
       <label for="parent-list">Select List:</label>
       <select id="parent-list">
         ${dataStore.lists.map(list => {
-            return `<option value=${list}>${list}</option>`
+            return `<option value=${list.title}>${list.title}</option>`
           })
         }
       </select>
@@ -34,26 +49,46 @@ const renderNewTaskForm = () => {
   `
 }
 
-const renderListDiv = (listTitle) => {
-  // USING DOCUMENT.CREATE ELEMENT
-  // const newDiv = document.createElement('div') //create new div
-  // const titleH2 = document.createElement('h2') //create new h2
-  // const deleteButton = document.createElement('button') //create new button
-  // deleteButton.className = 'delete-list'
-  // deleteButton.dataset.title = newListTitle
-  // deleteButton.innerText = 'X'
-  // titleH2.innerText = newListTitle //set the user list title to the h2 inner text
+const renderTask = (taskData) => {
+  return `
+    <li>
+      Task: ${taskData.description}
+      <button data-list-title="${taskData.list}" data-task-name="${taskData.description}" class="delete-task">
+        X
+      </button>
+      <br>
+        Priority: ${taskData.priority}
+    </li>
+  `
+}
+
+const renderTasksForList = (listDataObject) => {
+  return listDataObject.tasks.map(renderTask)
+}
+
+  const renderListDiv = (listDataObject) => {
+    // USING DOCUMENT.CREATE ELEMENT
+    // const newDiv = document.createElement('div') //create new div
+    // const titleH2 = document.createElement('h2') //create new h2
+    // const deleteButton = document.createElement('button') //create new button
+    // deleteButton.className = 'delete-list'
+    // deleteButton.dataset.title = listDataObject.title
+    // deleteButton.innerText = 'X'
+    // titleH2.innerText = listDataObject.title //set the user list title to the h2 inner text
   // titleH2.appendChild(deleteButton)
   // newDiv.appendChild(titleH2) //append the new h2 to the new div
   // listDiv.appendChild(newDiv) //append the new div to the list div
   return `
       <div>
         <h2>
-          ${listTitle}
-          <button data-title="${listTitle}" class="delete-list">
+          ${listDataObject.title}
+          <button data-title="${listDataObject.title}" class="delete-list">
             X
           </button>
         </h2>
+        <ul>
+          ${renderTasksForList(listDataObject)}
+        </ul>
       </div>
     `
 }
