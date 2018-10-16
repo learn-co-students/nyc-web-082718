@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newListObject = { title: newListTitle, tasks: [] }
     dataStore.lists.push(newListObject) //add new list to the store
     mainContentDiv.innerHTML = renderAllListContent() //massive helper fn that replaces ALL of the HTML in the div
+    event.target.reset() //clear out the form
   }) //end submit handler
 
   mainContentDiv.addEventListener('submit', (event) => {//submit handler for new task form
@@ -26,17 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
     mainContentDiv.innerHTML = renderAllListContent() //massive helper fn that replaces ALL of the HTML in the div
   }) //end new task ev handler
 
+  mainContentDiv.addEventListener('click', (event) => {
+    if (event.target.className.includes('delete-list')) {
+      const targetListTitle = event.target.dataset.title
+      const filteredStore = dataStore.lists.filter((list) => list.title !== targetListTitle)
+      dataStore.lists = filteredStore
+      mainContentDiv.innerHTML = renderAllListContent()
+    }
+
+  })//end click handler for delete tasks
+
 }) //end DOMContentLoaded
+
 /**************HELPER FNs (could move to their own file)***************************/
 const renderNewTaskForm = () => {
   return `
     <form id="create-task-form">
       <label for="parent-list">Select List:</label>
       <select id="parent-list">
-        ${dataStore.lists.map(list => {
-            return `<option value=${list.title}>${list.title}</option>`
-          })
-        }
+        ${dataStore.lists.map(list => `<option value=${list.title}>${list.title}</option>`)}
       </select>
         <label for="new-task-description">Task description:</label>
         <input required type="text" id="new-task-description" placeholder="description">
