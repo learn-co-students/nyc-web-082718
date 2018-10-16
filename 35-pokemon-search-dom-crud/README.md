@@ -121,9 +121,7 @@ formForCreatingNewPokemon.addEventListener('submit', (event, pokemonContainerToA
   }).then(response => response.json())
     .then(jsonPoke => {
       // create a new JS object with the data sent from the server
-      const newlyCreatedPokemon = new Pokemon(jsonPoke)
-      // render that newly created pokemon
-      pokemonContainerToAppendPokemonCards.innerHTML += newlyCreatedPokemon.render()
+      pokemonContainer.innerHTML = `<p>${parsedJSONData.name}</p><img src="${parsedJSONData.sprites.front}">`
     })
 
   event.target.reset() //clear the form
