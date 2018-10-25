@@ -67,7 +67,22 @@ const pizzaObj2 = { pizza, restaurant }
 - removing elements from an array
 
 ```js
+const mud = {
+  blood: 'it iz spooky season rn'
+}
 
+const mudCopy = { ...mud, parents: 'expectations' }
+// first arg is target obj; the thing i want to add properties to
+const mudCopy2 = Object.assign({}, mudCopy)
+// take all the key/value pairs from mudCopy and merge them into this new TARGET OBJ, which happens to be blank
+
+```
+
+```js
+const names = ['evans', 'murd3rf4ce']
+const noEvans = names.slice(1)
+
+const removedEvans = names.filter(name => name !== 'evans')
 ```
 
 ---
@@ -76,6 +91,11 @@ const pizzaObj2 = { pizza, restaurant }
 
 ```javascript
 
+const implicitReturn = () => 'hi'
+const explicitReturn = () => {
+  return 'hi'
+}
+
 ```
 
 ---
@@ -83,7 +103,7 @@ const pizzaObj2 = { pizza, restaurant }
 #### function binding vs arrow functions
 
 ```javascript
-const Dog = {
+const dog = {
   name: 'winfield',
   favSnacks: ['cheese', 'peanut butter', 'carrots'],
   sayName: function() {
@@ -93,17 +113,17 @@ const Dog = {
     return this.name + 'BARK!'
   },
   sayFavFoods: function() {
-    // this is Dog
+    // this is dog
     this.favSnacks.forEach(s => {
       console.log(`${this.name} likes ${s}`)
     })
   }
 }
-// this will be Dog
-Dog.sayName() //'winfield'
+// this will be dog
+dog.sayName() //'winfield'
 // this will be the window
-Dog.barkName() //'undefined BARK!'
-Dog.sayFavFoods()
+dog.barkName() //'undefined BARK!'
+dog.sayFavFoods()
 ```
 
 ---
@@ -112,6 +132,17 @@ Dog.sayFavFoods()
 
 ```javascript
 
+class Dog {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  bark() {
+    return this.name
+  }
+}
+
 ```
 
 ---
@@ -119,6 +150,9 @@ Dog.sayFavFoods()
 #### passing functions around as arguments (callbacks) and ES6 Iterators (map, reduce, forEach, filter, find, etc)
 
 ```javascript
+const names = ['dracular', 'voldemort', 'the hash slinging slasher']
+
+names.map((name) => name.toUpperCase())
 
 ```
 
@@ -127,6 +161,13 @@ Dog.sayFavFoods()
 #### dynamic object keys
 
 ```javascript
+function dynamicSetKeys(obj, key, val) {
+  // obj -> {}
+  // key -> 'topping'
+  // val -> 'scallions'
+  obj[key] = val
+  return obj
+}
 
 ```
 
