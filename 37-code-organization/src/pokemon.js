@@ -17,6 +17,10 @@ class Pokemon {
     })
   }
 
+  toggleSprite() {
+    //TODO: 🤔
+  }
+
   renderSinglePokemon() { //create an HTML string for a SINGLE pokemon card
     // pikachu.render()
     return (`

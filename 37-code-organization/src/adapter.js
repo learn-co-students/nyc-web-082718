@@ -1,29 +1,34 @@
 class Adapter {
-  static getAllPokemon() {
-    return fetch('http://localhost:3000/pokemon', {
-      method: 'GET'
-    })
-  }
-
-  static createNewPokemon(newPokeDetailsObject) {
-    /* {
-    name: 'bulbasaur',
-    sprites: {
-      front: 'frontimgurl',
-      back: 'backimgurl'
+  constructor(endpoint) {
+    // we are assuming a RESTful JSON API
+    this.endpoint = endpoint,
+    this.headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     }
-  } */
-    return fetch(Adapter.pokeEndpoint, {
+  }
+
+  getIndex() {
+    return fetch(this.endpoint)
+    // return fetch(this.endpoint, {
+    //   method: 'GET'
+    // })
+  }
+
+  createNewRecord(requestBody) {
+    // { name: 'bulbasaur', sprites: {front: '', back: '' } }
+    return fetch(this.endpoint, {
       method: 'POST',
-      headers: Adapter.headers,
-      body: JSON.stringify(newPokeDetailsObject)
+      headers: this.headers,
+      body: JSON.stringify(requestBody)
+    })
+  }
+
+  updateRecord(updatedDetails, id) {
+    return fetch(`${this.endpoint}/${id}`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(updatedDetails)
     })
   }
 }
-
-Adapter.headers = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-}
-
-Adapter.pokeEndpoint = 'http://localhost:3000/pokemon'
