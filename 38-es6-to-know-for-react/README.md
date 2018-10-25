@@ -4,37 +4,47 @@
 
 ---
 
-## The Following are Used heavily in Mod 4 for React:
-- destructuring
+## The Following are Used heavily in Mod 4 for React (and are important to know if you're writing modern JavaScript):
 
-```javascript
-const voltron = {
-  robot1: 'a robot',
-  robot2: 'another robot',
-  robot3: 'yet another robot'
+#### destructuring
+
+```js
+const spaceship = {
+  pilot: 'elon musk',
+  guidance: 'marc zucc',
+  chef: 'gordon ramsay'
 }
-/* from the object voltron,
+/* from the object spaceship,
 please pull out the VALUES stored at
-robot1 and robot2 */
-const { robot1, robot2} = voltron
+pilot and chef */
+const { pilot, chef } = spaceship
+
+console.log(pilot) // 'elon musk'
+console.log(chef) // 'gordon ramsay'
 
 class Person {
-  constructor({ name, favColor }) {
-    this.name = name
-    this.favColor = favColor
-  }
-}
-//VS
-class Person {
+  // props -> { name: 'winfield', favColor: 'red' }
   constructor(props) {
     this.name = props.name
     this.favColor = props.favColor
   }
 }
 
+//VS
+
+class Person {
+  // props -> { name: 'winfield', favColor: 'red' }
+  constructor({ name, favColor }) {
+    this.name = name
+    this.favColor = favColor
+  }
+}
+
 ```
 
-- key value assignment shortcut
+---
+
+#### key value assignment shortcut
 
 ```javascript
 const pizza = 'pepperoni'
@@ -45,52 +55,32 @@ const pizzaObj = {
   restaurant: restaurant
 }
 
+// name of key is the same as the name of the variable we wish to assign to that key
 const pizzaObj2 = { pizza, restaurant }
 ```
 
-- spreading
+---
+
+#### ES6 Spread Operator
 
 - `slice()` or `Object.assign()`
+- removing elements from an array
 
-```javascript
-const trebuchet = { range: 300, ammo: 'rocks' }
-
-function updateCat() {
-  // return a COPY of the trebuchet object
-	return {...trebuchet, range: 500}
-}
-
-function updateCat(newRange) {
-	return Object.assign({}, trebuchet, {range: 500})
-}
-
-const names = ['andrew', 'garry', 'jon', 'evans']
-
-// return COPY of names with 'jason' added
-[...names, 'jason']
-// copy of the array
-["andrew", "garry", "jon", "evans", "jason"]
-
-// removing elements:
-names.slice(0, 1) // ['andrew']
-
-names.filter(n => n !== 'andrew')
-// ["garry", "jon", "evans"]
-
+```js
 
 ```
-- all the forms of arrow functions
+
+---
+
+#### all the forms of arrow functions
 
 ```javascript
-// implicit return
-const sayHi = () => 'HELLOOO'
 
-// has a block {}, needs explicit return
-const sayBye = () => {
-  return 'BYEEE'
-}
 ```
-- function binding vs arrow functions
+
+---
+
+#### function binding vs arrow functions
 
 ```javascript
 const Dog = {
@@ -115,55 +105,41 @@ Dog.sayName() //'winfield'
 Dog.barkName() //'undefined BARK!'
 Dog.sayFavFoods()
 ```
-- class instance properties and class syntax in general
+
+---
+
+#### class instance properties and class syntax in general
 
 ```javascript
-class Donut {
-  constructor(name, toppings) {
-    this.name = name
-    this.toppings = toppings
-  }
-}
-
-const glazed = new Donut('glazed', 'glaze')
-
-const sprinkles = new Donut('sprinkle', 'sprinkles')
 
 ```
 
-- passing functions around as arguments
+---
+
+#### passing functions around as arguments (callbacks) and ES6 Iterators (map, reduce, forEach, filter, find, etc)
 
 ```javascript
-function printRed(string) {
-  console.log(`%c ${string}`, 'color: red')
-}
 
-function printGreen(string, idx, arr) {
-  console.log(`%c ${string} ${idx} ${arr}`, 'color: green')
-}
-
-['chocolate', 'fried chicken', 'mac and cheese'].forEach(printRed)
-
-Array.prototype.myForEach = function(callback) {
-  // this will be the array we called the method on
-  for(let i = 0; i < this.length; i++) {
-    callback(this[i], i, this)
-  }
-}
 ```
-- dynamic object keys
+
+---
+
+#### dynamic object keys
 
 ```javascript
-function dynamicKeyCreate(obj, key, val) {
-  obj[key] = val
-  return obj
-}
+
 ```
-  - This is only for one trick we use in React forms.
 
 ### External Resources
 
 - [Modern JavaScript](http://www.reactnativeexpress.com/modern_javascript)
 - [Wes Bos Simple Guide for Undertanding Destructuring in JS](https://wesbos.com/destructuring-objects/)
+- [MDN Article on ES6 Object Shorthand Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
 - [MDN Article on ES6 Spread Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [MDN Article on Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+- [MDN Article on `Function.prototype.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
+- [MDN Article on ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [MDN Article on Callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function)
 - [MDN Article on forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [MDN `Array.prototype.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [MDN "Working with Objects"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)
