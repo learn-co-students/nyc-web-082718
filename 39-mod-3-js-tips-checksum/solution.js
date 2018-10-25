@@ -45,6 +45,15 @@ function mathMaxChecksum(data) {
 
 console.log(mathMaxChecksum(data))
 
+
+function mathMaxTerse(data) {
+  return data.reduce((sum, innerArr) => {
+    return sum + Math.max(...innerArr) - Math.min(...innerArr)
+  }, 0)
+}
+
+console.log(mathMaxTerse(data))
+
 function calculateChecksum(data) { //data is array of arrays
   const diffs = []
   for (let i = 0; i < data.length; i++) {
