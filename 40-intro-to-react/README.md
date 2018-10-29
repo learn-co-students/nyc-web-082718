@@ -5,15 +5,15 @@ Intro to React
 
 ### Morning
 
-- [ ] Use historical context and the Mod 3 experience to explain why React and declarative programming is special
-- [ ] Understand how create-react-app works and what it offers a developer
+- [-] Use historical context and the Mod 3 experience to explain why React and declarative programming is special
+- [x] Understand how create-react-app works and what it offers a developer
 - [ ] See what a React Component actually is (an object, made by a class)
-- [ ] Setup a new React app and play around with building things
-- [ ] Learn how to identify components on a page, visually
+- [x] Setup a new React app and play around with building things
+- [-] Learn how to identify components on a page, visually
 
 ### Afternoon
 
-- [ ] Build custom components and see initial JSX
+- [-] Build custom components and see initial JSX
 - [ ] Build modular & reusable components
 - [ ] See how props are to components as arguments are to functions
 - [ ] Begin seeing the component hierarchy and the flow of information
@@ -25,6 +25,15 @@ Intro to React
 ### Vanilla JS
 
 - Pros/Cons?
+
+Write it in whichever way you want - con
+  - repetitive, same thign diffent ways
+Difficult to collaborate with others
+Disorganization
+Scope, Global Variables not being recognized
+How it easy it made giving the frontend cool functionality - pro
+Functional programming - very exciting
+
 - What will React help with?
 
 ### History / Context of React
@@ -35,6 +44,11 @@ Intro to React
   - Learn Once, Write Everywhere
 
 ### Tooling / Project Setup
+
+`npm install -g create-react-app`
+
+Pizzaria Menu
+`create-react-app mikes-pizzaria`
 
 - create-react-app
 - anatomy of a create-react-app
