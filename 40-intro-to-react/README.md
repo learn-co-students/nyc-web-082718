@@ -61,6 +61,8 @@ Pizzaria Menu
   - declarative programming (pseudocode)
 - `ReactDOM.render()`
 
+![dominoes compoents](dominoes.png)
+
 ### JSX
 
 - it's just syntactic sugar for `React.createElement`
