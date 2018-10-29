@@ -18,6 +18,14 @@ Intro to React
 - [ ] See how props are to components as arguments are to functions
 - [ ] Begin seeing the component hierarchy and the flow of information
 
+App
+  NavBar
+  Promotions
+    Promotion
+      OtherStuff
+    Promotion
+      OtherStuff
+  Blah
 ---
 
 ## Outline
