@@ -75,7 +75,7 @@ gem "active_model_serializers", "~> 0.10.7"
 gem "faker", "~> 1.9"
 ```
 
-- Don't forget to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in your app. Uncomment the following in [`config/initializers/cors.rb`](/42-redux-auth-rails-jwt/server/config/initializers/cors.rb). Don't forget to change the origins from `example.com` to `*`
+- Don't forget to enable [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in your app. Uncomment the following in [`config/initializers/cors.rb`](/45-auth-jwt-react-redux/server/config/initializers/cors.rb). Don't forget to change the origins from `example.com` to `*`
 - Depending on the use-case and needs of our API, we might want to limit access to our app. For example, if our React frontend is deployed to `myDankReactApp.com`, we might want to limit access to that domain only. If certain endpoints are meant to be public, we can make those available but limit to `GET` requests, for example.
 
 ```ruby
@@ -104,7 +104,7 @@ end
   - `rails g serializer user` (if you want to [use a serializer](https://www.sitepoint.com/active-model-serializers-rails-and-json-oh-my/))
   - `rails db:migrate`
 
-- Add `has_secure_password` to [`app/models/user.rb`](/42-redux-auth-rails-jwt/server/app/models/user.rb). Recall that `has_secure_password` comes from [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
+- Add `has_secure_password` to [`app/models/user.rb`](/45-auth-jwt-react-redux/server/app/models/user.rb). Recall that `has_secure_password` comes from [`ActiveModel` and adds methods to set and authenticate against a BCrypt password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password):
 
 ```ruby
 class User < ApplicationRecord
@@ -245,7 +245,7 @@ end
 
 ---
 
-- Next let's add the routes we'll need for our server. In [`config/routes.rb`](/42-redux-auth-rails-jwt/server/config/routes.rb):
+- Next let's add the routes we'll need for our server. In [`config/routes.rb`](/45-auth-jwt-react-redux/server/config/routes.rb):
 
 ```ruby
 Rails.application.routes.draw do
@@ -752,9 +752,9 @@ render json: { message: 'Please log in' }, status: :unauthorized
 
 <!-- Markdown Variables -->
 
-[gemfile]: /42-redux-auth-rails-jwt/server/Gemfile
-[schema]: /42-redux-auth-rails-jwt/server/db/schema.rb
-[application_controller]: /42-redux-auth-rails-jwt/server/app/controllers/application_controller.rb
-[auth_controller]: /42-redux-auth-rails-jwt/server/app/controllers/api/v1/auth_controller.rb
-[users_controller]: /42-redux-auth-rails-jwt/server/app/controllers/api/v1/users_controller.rb
-[user_serializer]: /42-redux-auth-rails-jwt/server/app/serializers/user_serializer.rb
+[gemfile]: /45-auth-jwt-react-redux/server/Gemfile
+[schema]: /45-auth-jwt-react-redux/server/db/schema.rb
+[application_controller]: /45-auth-jwt-react-redux/server/app/controllers/application_controller.rb
+[auth_controller]: /45-auth-jwt-react-redux/server/app/controllers/api/v1/auth_controller.rb
+[users_controller]: /45-auth-jwt-react-redux/server/app/controllers/api/v1/users_controller.rb
+[user_serializer]: /45-auth-jwt-react-redux/server/app/serializers/user_serializer.rb
