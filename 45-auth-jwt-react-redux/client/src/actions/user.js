@@ -5,6 +5,7 @@ export const /*FUNCTION*/ loginUser = (username, password) => {
     // fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`)
     // adapter.loginUser(username, password)
     // http://localhost:3000
+    // TODO: send out env variables
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, { //TODO: move this to an adapter
       method: 'POST',
       headers: {
@@ -19,6 +20,7 @@ export const /*FUNCTION*/ loginUser = (username, password) => {
       })
     })
       .then(response => {
+        console.log(response)
         if (response.ok) {
           return response.json()
         } else {
@@ -30,9 +32,10 @@ export const /*FUNCTION*/ loginUser = (username, password) => {
         jwt: 'aaaaaaaaaaaaaaa.bbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccc'
       } */
       .then(JSONResponse => {
-        console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
+        console.log('%c INSIDE YE OLDE .THEN', 'color: navy', JSONResponse)
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+        // dispatch(setCurrentUser(JSONResponse.user))
       })
       .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
       // .then((jsonResponse) => {

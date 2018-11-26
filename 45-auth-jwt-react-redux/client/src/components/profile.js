@@ -7,6 +7,7 @@ import withAuth from '../hocs/withAuth'
 const Profile = ({ avatar, username, bio }) => (
   <Card>
     <Image src={avatar} />
+    {/*<Image src={props.user.avatar} />*/}
     <Card.Content>
       <Card.Header>{username}</Card.Header>
 

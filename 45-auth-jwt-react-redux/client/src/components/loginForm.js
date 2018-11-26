@@ -11,6 +11,8 @@ class LoginForm extends React.Component {
   // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChange = (e, semanticInputData) => {
+    // semanticInputData.name -> username
+    // semanticInputData.name -> password
     this.setState({ [semanticInputData.name]: semanticInputData.value })
   }
 
