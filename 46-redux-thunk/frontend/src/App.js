@@ -4,13 +4,15 @@ import GameInstance from './components/GameInstance'
 import TeamSelector from './components/TeamSelector'
 import GameOver from './components/GameOver'
 import BackgroundVideo from './components/BackgroundVideo'
+import { connect } from 'react-redux';
+import { updateMonsters, fetchMonsters } from './actions';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       panel: 'gameInstance',
-      monsters: null,
+      // monsters: null,
       attacks: null,
       teams: null,
       team1: null,
@@ -28,9 +30,16 @@ class App extends Component {
   teamAssignmentURL = 'http://localhost:4000/team_assignments'
 
   componentDidMount() {
-    fetch(this.monstersURL)
-    .then(r=>r.json())
-    .then(monsters=>this.setState({ monsters }))
+    this.props.fetchMonsters();
+    // this.props.fetchAttacks();
+    // this.props.fetchTeams();
+    // this.props.fetchAssignments();
+
+    // fetch(this.monstersURL)
+    // .then(r=>r.json())
+    // .then(monsters=> {
+    //   this.props.updateMonsters(monsters)
+    // })
 
     fetch(this.attacksURL)
     .then(r=>r.json())
@@ -46,7 +55,7 @@ class App extends Component {
   }
 
   findMonster = monsterId => {
-    return this.state.monsters.find( monster => {
+    return this.props.monsters.find( monster => {
       return monster.id === monsterId
     })
   }
@@ -64,7 +73,7 @@ class App extends Component {
     })
 
     return this.state.assignments.filter( assignment => assignment.team_id === team.id).map( assignment => {
-      return this.state.monsters.find( monster => monster.id === assignment.monster_id )
+      return this.props.monsters.find( monster => monster.id === assignment.monster_id )
     })
   }
 
@@ -95,6 +104,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props, 'yay!');
     const showGame = this.state.team1 && this.state.team2
     return (
       <Fragment>
@@ -118,7 +128,7 @@ class App extends Component {
         />
       : showGame ?
         <GameInstance
-          monsters={this.state.monsters}
+          monsters={this.props.monsters}
           attacks={this.state.attacks}
           findMonster={this.findMonster}
           team1={this.state.team1}
@@ -130,7 +140,7 @@ class App extends Component {
         />
       :
         <TeamSelector
-          monsters={this.state.monsters}
+          monsters={this.props.monsters}
           attacks={this.state.attacks}
           teams={this.state.teams}
           assignments={this.state.assignments}
@@ -146,4 +156,31 @@ class App extends Component {
   }
 }
 
-export default App;
+// not sure? what is connect?
+// connect is a higher order function that returns a higher order component
+
+// map state to props => will map parts of the state to the props of this component
+function mapStateToProps(state) {
+  return {
+    monsters: state.monsters
+  }
+}
+
+// map functions to your props
+function mapDispatchToProps(dispatch) {
+  return {
+    updateMonsters: (monsters) => dispatch(updateMonsters(monsters)),
+    // thunk is a lot of abstraction!
+    // we need to go deeper!
+    // fetchMonsters: () => {
+    //   fetch('http://localhost:4000/monsters')
+    //   .then(r=>r.json())
+    //   .then(monsters=> {
+    //     dispatch(updateMonsters(monsters))
+    //   })
+    // }
+    fetchMonsters: () => dispatch(fetchMonsters())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

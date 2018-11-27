@@ -10,6 +10,7 @@
     "react-scripts": "2.1.1",
     "react-video-cover": "^1.2.0",
     "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "threejs-dice": "^1.0.3"
   },
   "scripts": {
