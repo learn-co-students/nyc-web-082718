@@ -1,0 +1,305 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height:auto;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.diceHeader {
+  padding-top: 10px;
+  padding-left: 3px;
+}
+
+.gamePhase {
+  max-width: 120px;
+}
+
+.playerOneDiceTray {
+  float:left;
+  z-index: 100;
+  position: absolute;
+  left: 12px;
+  top: 9%;
+  width: 100px;
+  color: white;
+  padding-right: 4px;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.playerTwoDiceTray {
+  float: right;
+  z-index: 100;
+  position: absolute;
+  padding-right: 4px;
+  right: 12px;
+  top: 9%;
+  width: 100px;
+  color: white;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#hexGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 130px;
+  margin-right: 130px;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  list-style-type: none;
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  max-width: 100%;
+  background:rgba(0,0,0,0.5);
+  /* opacity: 0; */
+  /* box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.75); */
+  /* border-radius: 10px; */
+  /* background-image: url(https://i.imgur.com/WnLR74C.jpg); */
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.board {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo {
+  max-height: 50px;
+  padding: 0.75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.changeScreens{
+  padding-top: 25px;
+  margin: auto;
+  width: 5%;
+}
+
+.hex {
+  position: relative;
+  visibility:hidden;
+}
+.hex::after{
+  content:'';
+  display:block;
+  padding-bottom: 86.602%;  /* =  100 / tan(60) * 1.5 */
+}
+.hexIn{
+  position: absolute;
+  width:96%;
+  padding-bottom: 110.851%; /* =  width / sin(60) */
+  margin:0 2%;
+  overflow: hidden;
+  visibility: hidden;
+  -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+      -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+          transform: rotate3d(0,0,1,-60deg) skewY(30deg);
+}
+.hexIn * {
+  position: absolute;
+  visibility: visible;
+  box-sizing:border-box;
+  /* background-color: rgba(0,0,0,0.3); */
+  /* outline:1px solid black; /* fix for jagged edges in FF on hover transition */
+}
+.hexLink {
+    display:block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+        -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+            transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+}
+
+/*** HEX CONTENT **********************************************************************/
+.tile-background {
+  left: -100%;
+  right: -100%;
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  -webkit-transform: rotate3d(0,0,0,0deg);
+      -ms-transform: rotate3d(0,0,0,0deg);
+          transform: rotate3d(0,0,0,0deg);
+}
+
+.hex h1, .hex p {
+  width: 100%;
+  padding: 5%;
+  box-sizing:border-box;
+  background-color: rgba(0,0,0,0.6);
+  font-weight: 300;
+  -webkit-transition:  -webkit-transform .2s ease-out, opacity .3s ease-out;
+          transition:          transform .2s ease-out, opacity .3s ease-out;
+}
+.hex h1 {
+  bottom: 50%;
+  padding-top:50%;
+  font-size: 1.25em;
+  color: rgba(255,255,255,0);
+  z-index: 1;
+  -webkit-transform:translate3d(0,-100%,0);
+      -ms-transform:translate3d(0,-100%,0);
+          transform:translate3d(0,-100%,0);
+}
+.hex h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 45%;
+  width: 10%;
+  text-align: center;
+}
+.hex p {
+  top: 50%;
+  padding-bottom:50%;
+  font-size: 1.25em;
+  color: rgba(255,255,255,0);
+  -webkit-transform:translate3d(0,100%,0);
+      -ms-transform:translate3d(0,100%,0);
+          transform:translate3d(0,100%,0);
+}
+
+/*** HOVER EFFECT  **********************************************************************/
+.hexLink:hover h1, .hexLink:focus h1,
+.hexLink:hover p, .hexLink:focus p{
+  -webkit-transform:translate3d(0,0,0);
+      -ms-transform:translate3d(0,0,0);
+          transform:translate3d(0,0,0);
+}
+
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+@media { /* <- 5-4  hexagons per row */
+  #hexGrid{
+    padding-bottom: 3.5%;
+  }
+  .hex {
+    width: 10%; /* = 100 / 5 */
+  }
+  .hex:nth-child(19n+11){ /* first hexagon of even rows */
+    margin-left:5%;  /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+.sprite-left{
+  left: -100%;
+  right: -100%;
+  transform: translateY(6%) translateX(2.5%);
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  z-index: 1000;
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+                  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(1px 1px 0 black)
+          drop-shadow(-1px -1px 0 black);
+  /* for flipping sprite */
+  /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
+}
+
+.sprite-right{
+  left: -100%;
+  right: -100%;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  z-index: 1000;
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+                  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(1px 1px 0 black)
+          drop-shadow(-1px -1px 0 black);
+  /* for flipping sprite */
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1) translateY(5%) translateX(1%);
+}
+
+.hoverCard{
+  padding: 0.5%;
+  padding-bottom: 10px;
+  z-index: 2000;
+  max-width: 750px;
+  max-height: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+  text-align:center;
+  color: rgb(255, 255, 255);
+}
+
+.game-over-container{
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  max-width: 100%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  /* position: relative; */
+  overflow: hidden;
+  /* margin: auto; */
+}
+
+.winner{
+  max-width: 100%;
+}
+
+.startNewGame{
+  text-align: center;
+  padding: 0.5%;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  z-index: 2000;
+  max-width: 400px;
+  max-height: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+  text-align:center;
+  color: rgb(255, 255, 255);
+}
+
+.startNewGame:hover {
+  cursor: pointer;
+  background-color: rgb(204, 255, 204, 0.6);
+}

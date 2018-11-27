@@ -1,0 +1,2 @@
+class MonsterElementsController < ApplicationController
+end

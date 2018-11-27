@@ -1,0 +1,109 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+
+.card{
+  min-height: 100px;
+  max-width: 779px;
+  padding: 15px;
+  border-radius: 10px;
+  /* box-shadow: 0px 10px 20px rgba(0,0,0,0.2); */
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  /* background-color: #E0F6F9; */
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align:center;
+  /* color: rgb(243, 225, 60); */
+  color: white;
+  /* text-shadow:
+   -1px -1px 0 #038,
+    1px -1px 0 #067,
+    -1px 1px 0 #213,
+     1px 1px 0 #000; */
+
+  /* text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000; */
+  /* width: 50%; */
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: rgb(204, 255, 204, 0.6);
+}
+
+.cardHeader{
+  padding: 10px;
+  /* padding-bottom: 10px; */
+  margin: auto;
+  width: 20%;
+  text-align: center;
+}
+
+.teamSelectButton{
+  width: 6%;
+  margin: auto;
+}
+
+.teamCard{
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+}
+
+.selectScreenHeader{
+    width: 403px;
+    /* height: 100px; */
+    /* background-color: red; */
+    position: absolute;
+    border-radius: 7px;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    color: white;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0px 10px 20px rgba(0,0,0,0.5); */
+}
+
+h1 {
+  /* text-shadow: 1px 2px rgba(0,0,0,0.5); */
+  /* text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000; */
+}
+
+.selectButton{
+  width: 50px;
+}
+
+.firstinfo{
+  @extend %flex;
+  flex-direction: row;
+  z-index:2;
+  position: relative;
+  img{
+    border-radius: 50%;
+    width: 120px;
+  height: 120px;
+}
+.profileinfo{
+    padding: 0px 20px;
+    h1{ font-size: 1.8em;}
+    h3{ font-size: 1.2em;
+        color: $maincolor;
+        font-style: italic;
+    }
+    p.bio{
+      padding: 10px 0px;
+      color: #5A5A5A;
+      line-height: 1.2;
+      font-style: initial;
+    }
+  }
+}
