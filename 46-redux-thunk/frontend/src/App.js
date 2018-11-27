@@ -95,7 +95,7 @@ class App extends Component {
   }
 
   render() {
-    const showGame = this.state.team1 && this.state.team2 ? true : false
+    const showGame = this.state.team1 && this.state.team2
     return (
       <Fragment>
       <div className="fullscreen-bg">
@@ -110,7 +110,14 @@ class App extends Component {
           alt="logo"
         />
       </a>
-      {showGame && !this.state.gameWonBy ?  <GameInstance
+      {this.state.gameWonBy ?
+        <GameOver
+          wonBy={this.state.gameWonBy}
+          selectTeam={this.selectTeam}
+          wipeGame={this.wipeGame}
+        />
+      : showGame ?
+        <GameInstance
           monsters={this.state.monsters}
           attacks={this.state.attacks}
           findMonster={this.findMonster}
@@ -121,7 +128,8 @@ class App extends Component {
           findTeamMonsters={this.findTeamMonsters}
           setWin={this.setWin}
         />
-      : !showGame && !this.state.gameWonBy ? <TeamSelector
+      :
+        <TeamSelector
           monsters={this.state.monsters}
           attacks={this.state.attacks}
           teams={this.state.teams}
@@ -132,16 +140,7 @@ class App extends Component {
           team2={this.state.team2}
           selectTeam={this.selectTeam}
         />
-      : null}
-      {this.state.gameWonBy
-        ?
-      <GameOver
-        wonBy={this.state.gameWonBy}
-        selectTeam={this.selectTeam}
-        wipeGame={this.wipeGame}
-      />
-        :
-      null}
+      }
       </Fragment>
     );
   }
